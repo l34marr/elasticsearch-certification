@@ -51,3 +51,6 @@ df_tf_idf = pd.DataFrame(tf_idf_scores.T.todense(), index = feature_names, colum
 print(df_tf_idf)
 ```
 [dfs_query_then_fetch](https://www.elastic.co/blog/understanding-query-then-fetch-vs-dfs-query-then-fetch)
+
+index.max_result_window (defaults to 10,000) can be updated via [API](https://discuss.elastic.co/t/elasticsearch-does-not-take-index-max-result-window-in-elasticsearch-yml/143399), not elasticsearch.yml
+search_after or scroll for [more than 10000 results](https://stackoverflow.com/questions/59503012/python-api-for-elastic-search-getting-10000-in-response-every-time)
