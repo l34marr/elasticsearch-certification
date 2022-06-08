@@ -119,3 +119,7 @@ ILM to automate the backing indices management: move older indices to less expen
 * rollover creates a new backing index that becomes the stream's new write index
 * operation (shrink or restore) can change a backing index's name, which do not remove a backing index from its data stream
 * append-only: when needed, use the udpate by query and delete by query APIs
+
+# Search Template
+
+https://www.elastic.co/guide/en/elasticsearch/reference/8.2/search-template.html
