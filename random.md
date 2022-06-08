@@ -55,6 +55,32 @@ print(df_tf_idf)
 index.max_result_window (defaults to 10,000) can be updated via [API](https://discuss.elastic.co/t/elasticsearch-does-not-take-index-max-result-window-in-elasticsearch-yml/143399), not elasticsearch.yml
 search_after or scroll for [more than 10000 results](https://stackoverflow.com/questions/59503012/python-api-for-elastic-search-getting-10000-in-response-every-time)
 
+# Elastic Cloud
+
+[Node Roles](http://ithelp.ithome.com.tw/articles/10240909): Master-Eligible, Data, Ingest, Machine Learning, Transform, Coordinating
+
+```
+GET _cluster/health
+GET _cluster/health?level=indices
+GET _cluster/health?wait_for_status=green
+```
+```
+POST /my-index/_doc
+PUT  /my-index/_doc/1    # updating if existing
+
+POST /my-index/_create/1
+PUT  /my-index/_create/1 # document already exists if existing
+```
+```
+POST /_aliases
+{
+  "actions": [
+    { "remove": { "index": "demo1", "alias": "staying" }},
+    { "add":    { "index": "demo2", "alias": "staying" }}
+  ]
+}
+```
+
 # Data Stream
 
 ILM to automate the backing indices management: move older indices to less expensive hardware
