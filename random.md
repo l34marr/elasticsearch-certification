@@ -65,11 +65,40 @@ GET _cluster/health?level=indices
 GET _cluster/health?wait_for_status=green
 ```
 ```
+PUT /my-index
+{
+  "mappings": {
+    "properties": {
+      "age":   { "type": "integer" },
+      "email": { "type": "keyword" },
+      "name":  { "type": "text" }
+  }
+}
+PUT /my-index/_mapping
+{
+  "properties" : {
+    "skill": {
+      "type": "keyword",
+      "index": false
+    }
+  }
+}
+GET /my-index/_mapping
+GET /my-index/_mapping/field/skill
+```
+index.maaping.total_fields.limit
+```
 POST /my-index/_doc
 PUT  /my-index/_doc/1    # updating if existing
 
 POST /my-index/_create/1
 PUT  /my-index/_create/1 # document already exists if existing
+```
+```
+$ cat requests
+{ "index" : { "_index" : "my-index", "_id" : "1" } }
+{ "field1" : "value1" }
+$ curl -s -H "Content-Type: application/x-ndjson" -XPOST localhost:9200/_bulk --data-binary "@requests"; echo
 ```
 ```
 POST /_aliases
