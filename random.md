@@ -54,3 +54,13 @@ print(df_tf_idf)
 
 index.max_result_window (defaults to 10,000) can be updated via [API](https://discuss.elastic.co/t/elasticsearch-does-not-take-index-max-result-window-in-elasticsearch-yml/143399), not elasticsearch.yml
 search_after or scroll for [more than 10000 results](https://stackoverflow.com/questions/59503012/python-api-for-elastic-search-getting-10000-in-response-every-time)
+
+# Data Stream
+
+ILM to automate the backing indices management: move older indices to less expensive hardware
+* index template: settings for backing indices
+* @timestamp field, mapped as date or date_nanos field type
+* read / write requests will be handled differently
+* rollover creates a new backing index that becomes the stream's new write index
+* operation (shrink or restore) can change a backing index's name, which do not remove a backing index from its data stream
+* append-only: when needed, use the udpate by query and delete by query APIs
