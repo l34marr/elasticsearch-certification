@@ -128,3 +128,8 @@ ILM to automate the backing indices management: move older indices to less expen
 # Search Template
 
 https://www.elastic.co/guide/en/elasticsearch/reference/8.2/search-template.html
+
+
+# Earthquake
+
+https://github.com/elastic/examples/tree/master/Exploring%20Public%20Datasets/earthquakes
