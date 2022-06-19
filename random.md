@@ -2,6 +2,41 @@
 
 [Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) [Kibana Training](https://www.elastic.co/training/kibana-fundamentals)
 
+```
+POST _reindex
+{
+  "source": {
+    "index": "produce_index"
+  },
+  "dest": {
+    "index": "produce_v2"
+  }
+}
+```
+
+```
+PUT product_v2/_mapping
+{
+  "runtime": {
+    "total": {
+      "type": "double",
+      "script": {
+        "source": "emit(doc[‘unit_price’].value* doc[‘quanty’].value)"
+      }
+    }
+  }
+}
+
+GET product_v2/_search
+{
+  "size": 0,
+  "aggs": {
+    "total_expense": {
+      "sum": {"field": "total"}
+    }
+  }
+}
+```
 
 # JVM
 
@@ -67,6 +102,98 @@ GET my-index/_search
       "content": {
         "query": "shard",
         "fuzziness": 1 /* can set to "auto" */
+      }
+    }
+  }
+}
+```
+
+```
+GET news_headlines/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_phrase": { "headline": "Michelle Obama" }
+        },
+        {
+          "match": { "category": "POLITICS" } /* "must_not":[{"match":{"category":"WEDDING"}}] */
+        } /* "should":[{}] */
+      ] /* optional the level of "must" -- "filter":{"range":{"date":{"gte":"","lte":""}}} */
+    }
+  }
+}
+```
+
+# Aggregation
+
+* Metrics: sum, avg, stats, cardinality
+* Buckets: date_histogram [fix_interval, calendar_interval], histogram, range, terms
+* Terms: 
+
+
+```
+GET my-index/_search
+{
+  "aggs": {
+    "transactions_per_custom_price_ranges": {
+      "range": {
+        "field": "UnitPrice",
+        "ranges": [
+          {
+            "to": 50
+          },
+          {
+            "from": 50,
+            "to": 200
+          },
+          {
+            "from": 200
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+```
+GET my-index/_search
+{
+  "aggs": {
+    "top_5_customers": {
+      "terms": {
+        "field": "CustomerID",
+        "size": 5 /* optionally to add below -- "order": { "_count": "asc" } */
+      }
+    }
+  }
+}
+```
+
+```
+GET my-index/_search
+{
+  "aggs": {
+    "transactions_per_day": {
+      "date_histogram": {
+        "field": "InoviceDate",
+        "calendar_interval": "day" /* optionally to add below -- "order": { "daily_revenue": "desc" } */
+      },
+      "aggs": {
+        "daily_revenue": {
+          "sum": {
+            "script": {
+              "source": "doc['UnitPrice'].value * doc['Quanity'].value"
+            }
+          }
+        },
+        "number_of_unique_customers_per_day": {
+          "cardinality": {
+            "field": "CustomerID"
+          }
+        }
       }
     }
   }
