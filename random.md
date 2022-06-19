@@ -1,6 +1,6 @@
 # Overview
 
-[Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) 
+[Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) [Kibana Training](https://www.elastic.co/training/kibana-fundamentals)
 
 
 # JVM
@@ -11,6 +11,66 @@ $ /usr/share/elasticsearch/jdk/bin/java --version
 openjdk 17.0.2 2022-01-18
 OpenJDK Runtime Environment Temurin-17.0.2+8 (build 17.0.2+8)
 OpenJDK 64-Bit Server VM Temurin-17.0.2+8 (build 17.0.2+8, mixed mode, sharing)
+```
+
+# Relevance
+
+Search Totoal Hits: since 7.0, ES limits the total counts to 10,000.
+
+```
+GET _search
+{
+  "track_total_hits": true
+}
+```
+
+Default scoring algorithm is [BM25](https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables)
+
+```
+GET my-index/_search
+{
+  "query": {
+    "match_phrase": {
+      "content": {
+        "query": "new music",
+        "slop": 1
+      }
+    }
+  }
+}
+```
+
+the slop parameter tells how far apart terms are allowed to be while still considering the document a match: *new fresh music* is included
+
+```
+GET my-index/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "new music",
+      "fields": [
+        "title",
+        "content",
+        "category"
+      ],
+      "type": "best_field" /* use "phrase" to improve precision */
+    }
+  }
+}
+```
+
+```
+GET my-index/_search
+{
+  "query": {
+    "match": {
+      "content": {
+        "query": "shard",
+        "fuzziness": 1 /* can set to "auto" */
+      }
+    }
+  }
+}
 ```
 
 # Distributed Scoring
