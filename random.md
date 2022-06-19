@@ -1,6 +1,6 @@
 # Overview
 
-[Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) [Kibana Training](https://www.elastic.co/training/kibana-fundamentals)
+[Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) [Kibana Training](https://www.elastic.co/training/kibana-fundamentals) [Beginner Video](http://ela.st/beginners-table-of-contents)
 
 ```
 POST _reindex
@@ -21,7 +21,7 @@ PUT product_v2/_mapping
     "total": {
       "type": "double",
       "script": {
-        "source": "emit(doc[‘unit_price’].value* doc[‘quanty’].value)"
+        "source": "emit(doc['unit_price'].value* doc['quanty'].value)"
       }
     }
   }
@@ -89,6 +89,53 @@ GET my-index/_search
         "category"
       ],
       "type": "best_field" /* use "phrase" to improve precision */
+    }
+  }
+}
+```
+
+```
+GET news_headlines/_search
+{
+  "query": {
+    "multi_match": {
+      "query": "party planning",
+      "fields": [
+        "headline", "short_description"
+      ],
+      "type": "phrase"
+    }
+  }
+}
+```
+
+[Beginner Tutorial](http://ela.st/beginners-table-of-contents): Click on Part 2 ; Video 15:00 - 21:46 ; News Category Dataset from Kaggle news_headlines ; Click on Part 3 ; Video 27:00
+
+```
+GET news_headlines/_search
+{
+  "size": 0,
+  "aggs": {
+    "by_category": {
+      "terms": {
+        "field": "category", ## RETURN KEYWORD LIST and its count
+        "size": 100  ## LIMIT to first 100 terms
+      }
+    }
+  }
+}
+```
+
+```
+GET ecommerce_data/_search
+{
+  "size": 0,
+  "aggs": {
+    "transactions_by_8_hrs": {
+      "date_histogram": {
+        "field": "InvoiceDate",
+        "fixed_interval": "8h"  ### "calendar_interval": "day"
+      }
     }
   }
 }
