@@ -48,6 +48,30 @@ OpenJDK Runtime Environment Temurin-17.0.2+8 (build 17.0.2+8)
 OpenJDK 64-Bit Server VM Temurin-17.0.2+8 (build 17.0.2+8, mixed mode, sharing)
 ```
 
+# Inverted Index
+
+```
+"match": {"geoip.country_name": "united"}
+"sort": {"geoip.country_name": {"order": "asc"}}
+```
+以上會產生錯誤, 改用 Keyword Field -- "sort": {"geoip.country_name.keyword" ...} 因為內建會產生 Doc Value 用於 aggs 和 sort
+
+沒打算做索引或聚合的欄位, 可以指定取消來加速, 甚至完全失效
+```
+"http_version": {
+  "type": "keyword",
+  "index": false,
+  "doc_values": false,
+  "enabled": false
+}
+```
+
+# Mapping
+
+把 first_name last_name 執行 copy_to 到 full_name 可以啟動索引, 但不會出現在 `_source`
+
+[null_value](http://elastic.co/guide/en/elasticsearch/reference/current/null-value.html) 可以指定預設值, 但 `[ ]` 並沒包含 Null 所以不會變成預設值
+
 # Relevance
 
 Search Totoal Hits: since 7.0, ES limits the total counts to 10,000.
