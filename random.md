@@ -2,6 +2,8 @@
 
 [Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) [Kibana Training](https://www.elastic.co/training/kibana-fundamentals) [Beginner Video](http://ela.st/beginners-table-of-contents)
 
+HTTP 和 transport 兩種溝通模式 http.port (9200-9299) transport.tcp.port (9300-9399)
+
 ```
 POST _reindex
 {
