@@ -57,6 +57,10 @@ OpenJDK Runtime Environment Temurin-17.0.2+8 (build 17.0.2+8)
 OpenJDK 64-Bit Server VM Temurin-17.0.2+8 (build 17.0.2+8, mixed mode, sharing)
 ```
 
+# Component Template
+
+[built-in Component Template](http://elastic.co/guide/en/elasticsearch/reference/current/indices-component-template.html) 包括 logs-mappings log-settings 等，指定 version 的話，就可以讓 Elastic Agent 使用自製的樣版。
+
 # Inverted Index
 
 ```
