@@ -1,6 +1,13 @@
 # Overview
 
-[Topics](https://www.elastic.co/training/elastic-certified-engineer-exam) [Kibana Training](https://www.elastic.co/training/kibana-fundamentals) [Beginner Video](http://ela.st/beginners-table-of-contents)
+* [Certified Engineer Exam Topics](https://www.elastic.co/training/elastic-certified-engineer-exam)
+* [Kibana Training](https://www.elastic.co/training/kibana-fundamentals)
+* [ES Beginner Video](http://ela.st/beginners-table-of-contents) 
+* [Kibana Tutorial](https://www.youtube.com/watch?v=DVgKDPf7hOU)
+
+```
+$ curl -H "Content-Type:application/x-ndjson" -XPOST -u elastic:PASSWD https://example.com:9200/_bulk --data-binary "@test-data.bulk.ndjson"
+```
 
 HTTP 和 transport 兩種溝通模式 http.port (9200-9299) transport.tcp.port (9300-9399)
 
