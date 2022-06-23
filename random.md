@@ -284,6 +284,13 @@ GET my-index/_search
 }
 ```
 
+# Custom Analyzer
+
+* 決定 analyzer 的順序: 1) Query 裡是否有指定 analyzer 參數 2) Field 裡是否有指定 search_analyzer 參數 3) Index 裡是否有指定 default_search 參數 4) Field 裡是否有指定 analyzer 參數 5) 以上都沒有就使用 Standard Analyzer
+* 使用 ["type": "custom"](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html) 或省略 "type" 設定
+* "filter" 順序會有影響: "stop", "lowercase" https://hoohoo.top/blog/elasticsearch-analyzer/
+
+
 # Distributed Scoring
 
 ## TF vs IDF
