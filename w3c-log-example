@@ -1,0 +1,22 @@
+#Version: 1.0
+#Software: CuteLogger
+# https://help.globalscape.com/help/archive/eft6-5/mergedprojects/eft/specifyinglogformattypeandlocation.htm
+#Date: 2010-04-08 20:07:50
+#Fields: date time c-ip c-port cs-username cs-method cs-uri-stem cs-uri-query sc-status sc-bytes cs-bytes s-name s-port
+2010-04-08 20:07:07 192.168.241.1 - test [1]user test - 331 - - - 22
+2010-04-08 20:07:07 192.168.241.1 - test [1]pass ******* - 230 - - - 22
+2010-04-08 20:07:16 192.168.241.1 - test [1]created /Test+File+1.txt - 226 - 54 - 22
+2010-04-08 20:08:23 192.168.241.1 - test [1]rnfr /Test+File+1.txt - 350 - - - 22
+2010-04-08 20:08:23 192.168.241.1 - test [1]rnto /Test+File+2.txt - 250 - - - 22
+2010-04-08 20:08:26 192.168.241.1 - test [1]sent /Test+File+2.txt - 226 - 54 - 22
+2010-04-08 20:10:02 192.168.241.1 - test [1]dele /Test+File+2.txt - 250 - - - 22
+2010-04-08 20:10:08 192.168.241.1 - test [1]ssh_disconnect timeout - 421 - - - 22
+2010-04-08 20:10:09 192.168.241.1 - test [1]ssh_disconnect timeout - 421 - - - 22
+2010-04-08 20:11:57 192.168.241.1 - test [2]user test - 331 - - - 990
+2010-04-08 20:11:57 192.168.241.1 - test [2]pass ****** - 230 - - - 990
+2010-04-08 20:12:04 192.168.241.1 - test [2]created /Test+File+1.txt - 226 - 54 - 990
+2010-04-08 20:12:16 192.168.241.1 - test [2]rnfr /Test+File+1.txt - 350 - - - 990
+2010-04-08 20:12:16 192.168.241.1 - test [2]rnto /Test+File+2.txt - 250 - - - 990
+2010-04-08 20:12:28 192.168.241.1 - test [2]rnfr /Test+File+2.txt - 350 - - - 990
+2010-04-08 20:12:28 192.168.241.1 - test [2]rnto /Test+File+3.txt - 250 - - - 990
+2010-04-08 20:12:31 192.168.241.1 - test [2]sent /Test+File+3.txt - 226 122 - - 990
