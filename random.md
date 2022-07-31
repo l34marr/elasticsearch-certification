@@ -4,6 +4,7 @@
 * [Kibana Training](https://www.elastic.co/training/kibana-fundamentals)
 * [ES Beginner Video](http://ela.st/beginners-table-of-contents) 
 * [Kibana Tutorial](https://www.youtube.com/watch?v=DVgKDPf7hOU)
+* [Azure Filebeat Example](https://discuss.elastic.co/t/filebeat-exiting-failed-to-start-crawler-creating-module-reloader-failed-string-value-is-not-set-accessing-connection-string/276552/6)
 
 ```
 $ curl -H "Content-Type:application/x-ndjson" -XPOST -u elastic:PASSWD https://example.com:9200/_bulk --data-binary "@test-data.bulk.ndjson"
