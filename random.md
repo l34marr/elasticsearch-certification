@@ -285,6 +285,10 @@ GET my-index/_search
 }
 ```
 
+# Index Lifecycle Management
+
+如果 warm 的 min_age 設成 8m 然後 cold 的 min_age 設成 3m (比8m小) 這樣是錯誤的設法嗎? 系統會提示錯誤嗎?
+
 # Custom Analyzer
 
 * 決定 analyzer 的順序: 1) Query 裡是否有指定 analyzer 參數 2) Field 裡是否有指定 search_analyzer 參數 3) Index 裡是否有指定 default_search 參數 4) Field 裡是否有指定 analyzer 參數 5) 以上都沒有就使用 Standard Analyzer
