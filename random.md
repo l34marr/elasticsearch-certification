@@ -4,6 +4,7 @@
 * [Kibana Training](https://www.elastic.co/training/kibana-fundamentals)
 * [ES Beginner Video](http://ela.st/beginners-table-of-contents) 
 * [Kibana Tutorial](https://www.youtube.com/watch?v=DVgKDPf7hOU)
+* [Runtime Search Request](https://www.elastic.co/guide/en/elasticsearch/reference/7.13/runtime-search-request.html)
 * [Azure Filebeat Example](https://discuss.elastic.co/t/filebeat-exiting-failed-to-start-crawler-creating-module-reloader-failed-string-value-is-not-set-accessing-connection-string/276552/6)
 
 ```
